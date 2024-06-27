@@ -1,24 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:patron_chain_r/widgets/ice_cream.dart';
-import 'package:patron_chain_r/widgets/ingredient_buttons.dart';
-import 'package:patron_chain_r/widgets/price_tag.dart';
+
 import 'handler.dart';
+import 'widgets/ice_cream.dart';
+import 'widgets/ingredient_buttons.dart';
+import 'widgets/price_tag.dart';
 
 class IceCreamPage extends StatefulWidget {
+  const IceCreamPage({super.key});
+
   @override
-  _IceCreamPageState createState() => _IceCreamPageState();
+  State<IceCreamPage> createState() => _IceCreamPageState();
 }
 
 class _IceCreamPageState extends State<IceCreamPage> {
-  List<String> ingredients = [];
+  List<String> ingredients = <String>[];
   bool showError = false;
 
   void handleRequest(String request) {
     setState(() {
       showError = false;
     });
-    final handler = VanillaHandler(ChocolateHandler(ErrorHandler(null)));
-    handler.handleRequest(request, (response) {
+    final VanillaHandler handler =
+        VanillaHandler(ChocolateHandler(ErrorHandler(null)));
+    handler.handleRequest(request, (String response) {
       if (response == 'Error') {
         setState(() {
           showError = true;
@@ -38,10 +42,10 @@ class _IceCreamPageState extends State<IceCreamPage> {
         title: const Text('Ice Cream'),
       ),
       body: Column(
-        children: [
+        children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            children: <Widget>[
               const PriceTag(),
               Icon(
                 Icons.error,

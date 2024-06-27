@@ -1,24 +1,33 @@
 abstract class Handler {
-  Handler? next;
   Handler(this.next);
-  void handleRequest(String request, Function(String) callback);
+  Handler? next;
+  void handleRequest(
+    String request,
+    Function(String) callback,
+  );
 }
 
 class VanillaHandler extends Handler {
-  VanillaHandler(Handler? next) : super(next);
+  VanillaHandler(super.next);
 
   @override
-  void handleRequest(String request, Function(String) callback) {
+  void handleRequest(
+    String request,
+    Function(String) callback,
+  ) {
     if (request == 'Vainilla') {
       callback('Vainilla');
     } else {
-      next?.handleRequest(request, callback);
+      next?.handleRequest(
+        request,
+        callback,
+      );
     }
   }
 }
 
 class ChocolateHandler extends Handler {
-  ChocolateHandler(Handler? next) : super(next);
+  ChocolateHandler(super.next);
 
   @override
   void handleRequest(String request, Function(String) callback) {
@@ -31,7 +40,7 @@ class ChocolateHandler extends Handler {
 }
 
 class ErrorHandler extends Handler {
-  ErrorHandler(Handler? next) : super(next);
+  ErrorHandler(super.next);
 
   @override
   void handleRequest(String request, Function(String) callback) {
