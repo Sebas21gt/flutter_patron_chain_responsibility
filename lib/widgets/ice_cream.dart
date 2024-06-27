@@ -1,27 +1,30 @@
 import 'package:flutter/material.dart';
 
 class IceCream extends StatelessWidget {
+  const IceCream({
+    required this.ingredients,
+    super.key,
+  });
   final List<String> ingredients;
-
-  const IceCream({super.key, required this.ingredients});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.center,
-      children: [
+      children: <Widget>[
         Column(
           children: <Widget>[
             Container(
-                width: 120,
-                height: 200,
-                decoration: const BoxDecoration(
-                  color: Colors.lightBlue,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(100),
-                    topRight: Radius.circular(100),
-                  ),
-                )),
+              width: 120,
+              height: 200,
+              decoration: const BoxDecoration(
+                color: Colors.lightBlue,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(100),
+                  topRight: Radius.circular(100),
+                ),
+              ),
+            ),
             Container(
               width: 120,
               height: 30,
@@ -40,7 +43,7 @@ class IceCream extends StatelessWidget {
             ),
           ],
         ),
-        ...ingredients.map((ingredient) {
+        ...ingredients.map((String ingredient) {
           switch (ingredient) {
             case 'Chocolate':
               return Positioned(
@@ -51,7 +54,7 @@ class IceCream extends StatelessWidget {
                   color: Colors.brown,
                 ),
               );
-              case 'Vainilla':
+            case 'Vainilla':
               return Positioned(
                 top: 30,
                 child: Container(
@@ -63,7 +66,7 @@ class IceCream extends StatelessWidget {
             default:
               return Container();
           }
-        }).toList(),
+        }),
       ],
     );
   }

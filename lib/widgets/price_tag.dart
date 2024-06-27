@@ -8,7 +8,7 @@ class PriceTag extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.black, width: 2.0),
+        border: Border.all(width: 2.0),
       ),
       child: const Text(
         'Precio: 5 usd',

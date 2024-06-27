@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
 class IngredientButton extends StatelessWidget {
-  final String label;
-  final VoidCallback onPressed;
-
   const IngredientButton({
-    super.key,
     required this.label,
     required this.onPressed,
+    super.key,
   });
+  final String label;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
